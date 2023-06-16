@@ -75,7 +75,6 @@ const postSlice = createSlice({
       const updatedPosts = state.posts.map(post =>
         post.id === updatedPost.id ? updatedPost : post
         );
-        console.log("updatedPost", updatedPost)
       return {
         ...state,
         posts: updatedPosts,
