@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PageTemplate from './components/PageTemplate';
 import HomePage from './components/HomePage';
-import NewPostPage from './components/NewPostPage';
 
 function App() {
   return (

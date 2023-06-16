@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import PostCard from './PostCard';
 import Pagination from './Pagination';
 import ContentLoader from './ContentLoader';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   // State for current page and search query
