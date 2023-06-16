@@ -62,8 +62,6 @@ const HomePage = () => {
     dispatch(fetchPosts());
   }, []);
 
-  console.log(posts);
-
   return (
     <div className="min-h-screen items-center flex flex-col gap-2">
       {/* Form for creating a new post */}
