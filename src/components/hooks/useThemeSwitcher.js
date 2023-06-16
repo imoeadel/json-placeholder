@@ -5,23 +5,30 @@ const useThemeSwitcher = () => {
   const [mode, setMode] = useState("");
 
   useEffect(() => {
+    // Check user preference and media query for dark mode
     const mediaQuery = window.matchMedia(preferDarkQuery);
     const userPref = window.localStorage.getItem('theme');
 
+    // Handle theme change
     const handleChange = () => {
       if (userPref) {
+        // Use user preference if available
         let check = userPref === 'dark' ? 'dark' : 'light';
         setMode(check);
 
+        // Add/remove dark mode class to root element
         if (check === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
         }
       } else {
+        // Use media query for initial theme detection
         let check = mediaQuery.matches ? 'dark' : 'light';
         setMode(check);
         window.localStorage.setItem('theme', check);
+
+        // Add/remove dark mode class to root element
         if (check === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
@@ -30,15 +37,16 @@ const useThemeSwitcher = () => {
       }
     };
 
+    // Initial theme detection and event listener
     handleChange();
-
     mediaQuery.addEventListener("change", handleChange);
 
+    // Clean up event listener
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
-  
 
   useEffect(() => {
+    // Update local storage and root element class based on theme mode
     if (mode === "dark") {
       window.localStorage.setItem('theme', 'dark');
       document.documentElement.classList.add('dark');

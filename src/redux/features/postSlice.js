@@ -50,23 +50,27 @@ const postSlice = createSlice({
     builder.addCase(deletePost.fulfilled, (state, action) => {
       state.posts = state.posts.filter((post) => post.id !== action.payload);
     })
+    // Reducer for handling the pending state of createPost
     .addCase(createPost.pending, (state) => {
       state.loading = true;
       state.error = null;
     })
+    // Reducer for handling the fulfilled state of createPost
     .addCase(createPost.fulfilled, (state, action) => {
       state.loading = false;
       state.posts.unshift(action.payload); // Add the new post at the beginning of the array
     })
+    // Reducer for handling the rejected state of createPost
     .addCase(createPost.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message;
-    });
-    // Reducer for handling the fulfilled state of updatePost
-    builder.addCase(updatePost.pending, state => {
+    })
+    // Reducer for handling the pending state of updatePost
+    .addCase(updatePost.pending, state => {
       state.loading = true;
-    });
-    builder.addCase(updatePost.fulfilled, (state, action) => {
+    })
+    // Reducer for handling the fulfilled state of updatePost
+    .addCase(updatePost.fulfilled, (state, action) => {
       const updatedPost = action.payload;
       const index = state.posts.findIndex(post => post.id === updatedPost.id);
       if (index !== -1) {

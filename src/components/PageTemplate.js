@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import TransitionEffect from './TransitionEffect';
 
 const PageTemplate = ({ children }) => {
   return (
