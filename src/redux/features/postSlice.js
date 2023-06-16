@@ -72,12 +72,16 @@ const postSlice = createSlice({
     // Reducer for handling the fulfilled state of updatePost
     .addCase(updatePost.fulfilled, (state, action) => {
       const updatedPost = action.payload;
-      const index = state.posts.findIndex(post => post.id === updatedPost.id);
-      if (index !== -1) {
-        state.posts[index] = updatedPost;
-      }
-      state.loading = false;
-      state.error = '';
+      const updatedPosts = state.posts.map(post =>
+        post.id === updatedPost.id ? updatedPost : post
+        );
+        console.log("updatedPost", updatedPost)
+      return {
+        ...state,
+        posts: updatedPosts,
+        loading: false,
+        error: ''
+      };
     });
   }
 })
