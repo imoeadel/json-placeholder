@@ -53,6 +53,7 @@ const HomePage = () => {
     setTimeout(() => {
       setPostCreated(false);
       dispatch(createPost(data));
+      setShowForm(false);
       reset();
     }, 500);
   };
